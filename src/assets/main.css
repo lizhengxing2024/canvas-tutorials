@@ -1,5 +1,5 @@
 body {
   min-height: 100vh;
-  color: var(--color-text);
-  background: var(#f8f8f8);
+  background-color: grey;
+  color: white;
 }
