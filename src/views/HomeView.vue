@@ -10,18 +10,52 @@
 <script setup lang="ts">
 import { useTemplateRef, onMounted } from "vue";
 
-import { Textor } from "@/components/texteditor/TextEditor";
+import TextEditor from "@/components/texteditor/TextEditor";
+import JavaScriptLanguage from "@/components/JavaScriptLanguage";
 
 const canvasDOMRef = useTemplateRef("canvasDOM");
 
-var editor = null;
+const code = `
+context.lineWidth = 2;
+context.strokeStyle = "#bbb";
+context.fillStyle = "#999";
 
+for (var i = 0; i < 9; i++) {
+    for (var j = 0; j < 4; j++) {
+        roundedRect(30 + 60 * i, 40 + 60 * j, 50, 50, 26 - (i * 2));
+        if (i % 4== j) {
+            context.fill();
+        }
+        context.stroke();
+    }
+}
+
+function roundedRect(x, y, width, height, radius) {
+    context.beginPath();
+    context.moveTo(x + radius, y);
+    context.lineTo(x + width - radius, y);
+    context.quadraticCurveTo(x + width, y, x + width, y + radius);
+    context.lineTo(x + width, y + height - radius);
+    context.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    context.lineTo(x + radius, y + height);
+    context.quadraticCurveTo(x, y + height, x, y + height - radius);
+    context.lineTo(x, y + radius);
+    context.quadraticCurveTo(x, y, x + radius, y);
+    context.closePath();
+}
+`;
+
+let editor: TextEditor;
 onMounted(() => {
-  editor = new Textor.TextEditor(document.getElementById("editor"));
+  editor = new TextEditor(canvasDOMRef.value!);
   editor.addEventListener("textchanged", update);
-  editor.language = new Textor.JavaScriptLanguage();
+  editor.language = new JavaScriptLanguage();
   editor.theme = editor.themeManager.get("dark");
   editor.focus();
-  editor.text = document.querySelector("#data").textContent;
+  editor.text = code;
 });
+
+function update() {
+  console.log(editor.text);
+}
 </script>

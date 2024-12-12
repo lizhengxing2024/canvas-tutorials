@@ -2,7 +2,7 @@ import type { ILanguage } from "./texteditor/ILanguage";
 import type { ITextReader } from "./texteditor/ITextReader";
 import type { ILanguageStyle } from "./texteditor/ILanguageStyle";
 
-export class JavaScriptLanguage implements ILanguage {
+export default class JavaScriptLanguage implements ILanguage {
   private _regExpCommands = { g: true, i: true, m: true };
   private _blockStatements = {
     case: true,
