@@ -2,6 +2,8 @@ import type { IUndoUnit } from "./IUndoUnit";
 import TextRange from "./TextRange";
 import TextBuffer from "./TextBuffer";
 import TextModel from "./TextModel";
+import TextPosition from "./TextPosition";
+import SelectionUndoUnit from "./SelectionUndoUnit";
 
 export default class TextUndoUnit implements IUndoUnit {
   private _textModel: TextModel;
