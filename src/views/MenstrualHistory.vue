@@ -27,10 +27,7 @@ function measureText(
   };
 }
 
-onMounted(() => {
-  const canvasDOM = canvasDOMRef.value;
-  const ctx = canvasDOM?.getContext("2d")!;
-
+function drawMH(ctx: CanvasRenderingContext2D) {
   const left = "16"; // 初潮年龄
   const top = "10"; // 经期
   const right = "40"; // 末次月经/绝经年龄
@@ -77,5 +74,11 @@ onMounted(() => {
     topM.height + Math.max(leftM.height, rightM.height) / 2
   );
   ctx.stroke();
+}
+
+onMounted(() => {
+  const canvasDOM = canvasDOMRef.value;
+  const ctx = canvasDOM?.getContext("2d")!;
+  drawMH(ctx);
 });
 </script>
