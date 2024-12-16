@@ -27,6 +27,8 @@ function measureText(
   };
 }
 
+const DEBUG_MODE = true;
+
 function drawMH(ctx: CanvasRenderingContext2D) {
   const left = "16"; // 初潮年龄
   const top = "10"; // 经期

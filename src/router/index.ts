@@ -13,6 +13,11 @@ const router = createRouter({
       name: "mh",
       component: () => import("../views/MenstrualHistory.vue"),
     },
+    {
+      path: "/qrcode",
+      name: "qrcode",
+      component: () => import("../views/QRCode.vue"),
+    },
   ],
 });
 
