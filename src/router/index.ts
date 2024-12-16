@@ -23,6 +23,11 @@ const router = createRouter({
       name: "barcode",
       component: () => import("../views/BarCode.vue"),
     },
+    {
+      path: "/fabric",
+      name: "fabric",
+      component: () => import("../views/Fabric.vue"),
+    },
   ],
 });
 
