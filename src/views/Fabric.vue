@@ -18,9 +18,34 @@ onMounted(async () => {
 
   var canvas = new fabric.Canvas(canvasDOM);
 
-  const text = new fabric.FabricText("hello world", { left: 100, top: 100 });
+  const text = new fabric.IText(
+    `this is
+multi-line
+text
+aligned right!`,
+    {
+      left: 100,
+      top: 100,
+      fontFamily: "Comic Sans",
+      fontSize: 40,
+      fontWeight: "bold",
+      underline: true,
+      lineHeight: 1.5,
+      textBackgroundColor: "rgb(0,200,0)",
+
+      styles: {
+        0: {
+          1: {
+            fontSize: 24,
+          },
+        },
+      },
+    }
+  );
 
   // 将文本添加到画布
   canvas.add(text);
+
+  text.enterEditing();
 });
 </script>
